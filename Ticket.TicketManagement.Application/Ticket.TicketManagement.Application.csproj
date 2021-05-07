@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
@@ -12,6 +12,13 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Ticket.TicketManagement.Domain\Ticket.TicketManagement.Domain.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Features\Categories\Commands\" />
+	  <Folder Include="Features\Events\Commands\CreateEvent\" />
+	  <Folder Include="Features\Orders\Commands\" />
+	  <Folder Include="Features\Orders\Queries\" />
 	</ItemGroup>
 
 </Project>
