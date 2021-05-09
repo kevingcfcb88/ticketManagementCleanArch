@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Ticket.TicketManagement.Application.Contracts.Infrastructure;
 using Ticket.TicketManagement.Application.Contracts.Persistence;
+using Ticket.TicketManagement.Application.Models.Mail;
 using Ticket.TicketManagement.Domain.Entities;
 
 namespace Ticket.TicketManagement.Application.Features.Events.Commands.CreateEvent
@@ -14,11 +16,13 @@ namespace Ticket.TicketManagement.Application.Features.Events.Commands.CreateEve
     {
         private readonly IEventRepository _eventRepository;
         private readonly IMapper _mapper;
+        private readonly IEmailService _email;
 
-        public CreateEventCommandHandler(IEventRepository eventRepo, IMapper mapper)
+        public CreateEventCommandHandler(IEventRepository eventRepo, IMapper mapper, IEmailService email)
         {
             _mapper = mapper;
             _eventRepository = eventRepo;
+            _email = email;
         }
 
         public async Task<Guid> Handle(CreateEventCommand request, CancellationToken cancellationToken)
@@ -35,6 +39,22 @@ namespace Ticket.TicketManagement.Application.Features.Events.Commands.CreateEve
             var @event = _mapper.Map<Event>(request);
 
             @event = await _eventRepository.AddAsync(@event);
+
+            var email = new Email()
+            {
+                To = "email@email.com",
+                Body = $"Event: {@event.Name} has been created",
+                Subject = "New Event"
+            };
+
+            try
+            {
+                await _email.SendEmail(email);
+            }
+            catch (Exception ex)
+            {
+                //
+            }
 
             return @event.EventId;
         }
