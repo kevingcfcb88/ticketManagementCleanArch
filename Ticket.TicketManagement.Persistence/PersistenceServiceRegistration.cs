@@ -11,7 +11,7 @@ namespace Ticket.TicketManagement.Persistence
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<TicketDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("TicketConnectionString")));
+                options.UseSqlServer(configuration.GetConnectionString("TicketManagement")));
 
             services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
             services.AddScoped<ICategoryRepository, CategoryRepository>();

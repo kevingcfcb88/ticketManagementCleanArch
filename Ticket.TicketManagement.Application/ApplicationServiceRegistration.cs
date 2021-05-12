@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace Ticket.TicketManagement.Application
 {
-    static class ApplicationServiceRegistration
+    public static class ApplicationServiceRegistration
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
