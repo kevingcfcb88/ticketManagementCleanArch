@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Ticket.TicketManagement.Application.Features.Categories.Queries.GetCategoriesList
 {
-    class GetCategoriesListQuery : IRequest<List<CategoryListVm>>
+    public class GetCategoriesListQuery : IRequest<List<CategoryListVm>>
     {
     }
 }

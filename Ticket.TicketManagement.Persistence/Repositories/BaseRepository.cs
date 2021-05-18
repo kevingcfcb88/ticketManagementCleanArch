@@ -16,7 +16,7 @@ namespace Ticket.TicketManagement.Persistence.Repositories
 
         }
 
-        public async Task<T> AddAsync(T entity)
+        public virtual async Task<T> AddAsync(T entity)
         {
             await _dbContext.Set<T>().AddAsync(entity);
             await _dbContext.SaveChangesAsync();

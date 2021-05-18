@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Ticket.TicketManagement.Application.Features.Events.Commands.CreateEvent
 {
-    class CreateEventCommand : IRequest<Guid>
+    public class CreateEventCommand : IRequest<Guid>
     {
         public string Name { get; set; }
         public int Price { get; set; }

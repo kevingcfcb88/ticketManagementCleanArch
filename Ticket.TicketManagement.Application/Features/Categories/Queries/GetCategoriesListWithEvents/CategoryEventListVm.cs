@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ticket.TicketManagement.Application.Features.Categories.Queries.GetCategoriesListWithEvents
 {
-    class CategoryEventListVm
+    public class CategoryEventListVm
     {
         public Guid CategoryId { get; set; }
         public string Name { get; set; }

@@ -8,7 +8,7 @@ using Ticket.TicketManagement.Application.Contracts.Persistence;
 
 namespace Ticket.TicketManagement.Application.Features.Categories.Queries.GetCategoriesListWithEvents
 {
-    class GetCategoriesListWithEventsQueryHandler : IRequestHandler<GetCategoriesListWithEventsQuery, List<CategoryEventListVm>>
+    public class GetCategoriesListWithEventsQueryHandler : IRequestHandler<GetCategoriesListWithEventsQuery, List<CategoryEventListVm>>
     {
         private readonly ICategoryRepository _categoryRepository;
         private readonly IMapper _mapper;

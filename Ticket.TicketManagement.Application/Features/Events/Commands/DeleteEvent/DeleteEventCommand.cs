@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Ticket.TicketManagement.Application.Features.Events.Commands.DeleteEvent
 {
-    class DeleteEventCommand : IRequest
+    public class DeleteEventCommand : IRequest
     {
         public Guid EventId { get; set; }
     }
