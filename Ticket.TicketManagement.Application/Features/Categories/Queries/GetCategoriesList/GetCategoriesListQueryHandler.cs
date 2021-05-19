@@ -20,11 +20,16 @@ namespace Ticket.TicketManagement.Application.Features.Categories.Queries.GetCat
             _categoryRepository = categoryRepository;
         }
 
-        async Task<List<CategoryListVm>> IRequestHandler<GetCategoriesListQuery, List<CategoryListVm>>.Handle(GetCategoriesListQuery request, CancellationToken cancellationToken)
+        //async Task<List<CategoryListVm>> IRequestHandler<GetCategoriesListQuery, List<CategoryListVm>>.Handle(GetCategoriesListQuery request, CancellationToken cancellationToken)
+        //{
+            //var allCategories = (await _categoryRepository.ListAllAsync()).OrderBy(x => x.Name);
+            //return _mapper.Map<List<CategoryListVm>>(allCategories);
+        public async Task<List<CategoryListVm>> Handle(GetCategoriesListQuery request, CancellationToken cancellationToken)
         {
             var allCategories = (await _categoryRepository.ListAllAsync()).OrderBy(x => x.Name);
             return _mapper.Map<List<CategoryListVm>>(allCategories);
         }
     }
+    
 }
 
