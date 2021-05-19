@@ -9,6 +9,7 @@ using Ticket.TicketManagement.Application.Features.Events;
 using Ticket.TicketManagement.Application.Features.Events.Commands.CreateEvent;
 using Ticket.TicketManagement.Application.Features.Events.Commands.DeleteEvent;
 using Ticket.TicketManagement.Application.Features.Events.Commands.UpdateEvent;
+using Ticket.TicketManagement.Application.Features.Events.Queries.GetEventsExport;
 
 namespace Ticket.TicketManagement.Api.Controllers
 {
@@ -64,6 +65,13 @@ namespace Ticket.TicketManagement.Api.Controllers
         {
             await _mediator.Send(new DeleteEventCommand() { EventId = id });
             return NoContent();
+        }
+
+        [HttpGet("export", Name = "ExportEvents")]
+        public async Task<FileResult> ExportEvents()
+        {
+            var fileDto = await _mediator.Send(new GetEventsExportQuery());
+            return File(fileDto.Data, fileDto.ContentType, fileDto.EventExportFileName);
         }
     }
 }
